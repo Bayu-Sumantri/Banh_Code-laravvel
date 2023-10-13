@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Kelas extends Model
 {
@@ -17,4 +18,10 @@ class Kelas extends Model
         "deskripsikelas",
         "pengajarID",
     ];
+
+    public function pengajar(): BelongsTo
+    {
+        return $this->belongsTo(pengajar::class, 'pengajarID');
+    }
+    
 }

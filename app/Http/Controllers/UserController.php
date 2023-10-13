@@ -28,7 +28,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.admin_sup..user_create');
+        return view('admin.admin_sup.user_create');
     }
 
     /**
@@ -52,6 +52,7 @@ class UserController extends Controller
             'password' => Hash::make($request->password),
             'level' => $request->level,
         ]);
+        // return $request;
         return redirect()->route('User.index')->with('success', "successfully Create user");
         
     }

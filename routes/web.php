@@ -4,8 +4,11 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PotoController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\PengajarController;
+use App\Models\Kelas;
+use App\Models\Pengajar;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +28,10 @@ Route::get('/plans', function () {
     return view('banhcode/plans');
 });
 Route::get('/dashboard', function () {
-    return view('admin.index');
+    $total_user = User::count();
+    $total_kelas = Kelas::count();
+    $total_pengajar = Pengajar::count();
+    return view('admin.index', compact('total_user','total_kelas','total_pengajar'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
@@ -62,6 +68,14 @@ Route::get('/edit_user/{id}', function (string $id) {
 
 // create kelas
 Route::resource('Kelas', 'App\Http\Controllers\KelasController');
+Route::get('/kelas_create', function () {
+    // $pengajar = Pengajar::findOrFail($id);
+    $allpengajar = Pengajar::all();
+    // return $episode;
+    return view('admin.admin_sup.create_kelas', compact('allpengajar'));
+})->name('kelas_create');
+Route::get('/kelas', [KelasController::class,"create"])->name('kelas'); // halaman create menu saja
+
 
 
 
@@ -69,6 +83,19 @@ Route::resource('Kelas', 'App\Http\Controllers\KelasController');
 // create pengajar
 Route::resource('Pengajar', 'App\Http\Controllers\PengajarController');
 Route::get('/pengajar_create', [PengajarController::class,"create"])->name('pengajar_create'); // halaman create menu saja
+
+
+
+//myprofile user.admin.staff
+Route::get('/profil', function () {
+    return view('admin/user_sup/user_edit');
+})->name('profil');
+Route::resource('Poto', 'App\Http\Controllers\PotoController')->parameters(['Poto'  => 'user']);
+Route::get('/profil_edit', function () {
+    return view('admin/user_sup/user_edit');
+})->name('admin.user.Myprofile');
+Route::patch('/profile_update', [PotoController::class,"update"])->name('profile_update'); // halaman create menu saja
+
 
 
 

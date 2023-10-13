@@ -17,13 +17,13 @@ class UserSeeder extends Seeder
     {
         $user = new \App\Models\User;
 
-        $user->name="bayu";
-        $user->email="bayu@gmail.com";
-        $user->password= \bcrypt('bayu1212');
-        $user->level= "admin";
-        $user->save();
-        $this->command->info("user telah di buat");
-        
+        User::create([
+            "name"           => "bayu", 
+            "email"          => "bayu@gmail.com", 
+            "Profile"          => "",
+            "level"          => "Admin", 
+            "password"       => \bcrypt('bayu12345')
+        ]);
         
     }
 }

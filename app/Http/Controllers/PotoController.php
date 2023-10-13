@@ -2,29 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kelas;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
-class KelasController extends Controller
+class PotoController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        {
-            $kelas = Kelas::orderBy('namakelas', 'asc')->simplePaginate(6);
-            $filterKeyword = $request->get('keyword');
-            if($filterKeyword) 
-            {
-                $kelas = Kelas::where('namakelas ', 'LIKE', "%$filterKeyword%")->paginate(3);
-            }
-            
-            return view('admin.admin_sup.create_kelas', compact('kelas'));
-        }
-    
+        //
     }
 
     /**
@@ -34,7 +25,7 @@ class KelasController extends Controller
      */
     public function create()
     {
-        return view('admin.admin_sup.create_kelas');
+        //
     }
 
     /**
@@ -45,24 +36,7 @@ class KelasController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'namakelas'          =>  ['required', 'string', 'max:255'],
-            'deskripsikelas'     =>  ['required', 'string', 'max:255'],
-            'images'             =>  ['required', 'image', 'mimes:jpeg,png,jpg,gif', 'max:5048'],
-        ]);
-
-        $images = $request->file('images')->store('images');
-
-        Kelas::create([
-            'namakelas'         => $request->namakelas,
-            'deskripsikelas'    => $request->deskripsikelas,
-            "images"            => $images,
-        ]);
-        
-        // dd($data);
-        return redirect(route('kelas'))->with('success', "successfully uploaded your Pengajar");
-
-        
+        //
     }
 
     /**
@@ -94,9 +68,26 @@ class KelasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        {
+            $request->validate([
+                'Profile'  => 'required|image|mimes:jpeg,png,jpg,gif|max:7048',
+            ]);
+            
+            if ($user->Profile) {
+                // Menghapus profil pengguna jika ada
+                Storage::delete($user->profile);
+            }
+            
+            $path = $request->file('Profile')->store('Profile');
+    
+            $user->update([
+                "Profile"  => $path ?? $user->Profile
+            ]);
+    
+            return redirect()->route('admin.user.Myprofile');
+        }
     }
 
     /**
