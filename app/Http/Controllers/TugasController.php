@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Kelas;
+use App\Models\Tugas;
 use App\Models\Pengajar;
 use Illuminate\Http\Request;
 
-class KelasController extends Controller
+class TugasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,16 +18,15 @@ class KelasController extends Controller
     public function index(Request $request)
     {
         {
-            $kelas = Kelas::orderBy('namakelas', 'asc')->simplePaginate(6);
+            $tugas = Tugas::orderBy('name', 'asc')->simplePaginate(6);
             $filterKeyword = $request->get('keyword');
             if($filterKeyword) 
             {
-                $kelas = Kelas::where('namakelas ', 'LIKE', "%$filterKeyword%")->paginate(3);
+                $tugas = Tugas::where('name ', 'LIKE', "%$filterKeyword%")->paginate(3);
             }
             
-            return view('admin.admin_sup.create_kelas', compact('kelas'));
+            return view('admin.user_sup.tugas', compact('tugas'));
         }
-    
     }
 
     /**
@@ -36,8 +37,10 @@ class KelasController extends Controller
     public function create()
     {
         $allpengajar = Pengajar::all();
-        
-        return view('admin.admin_sup.create_kelas', compact('allpengajar'));
+        $alluser     = User::all();
+        $allkelas    = Kelas::all();
+        // return $episode;
+        return view('admin.staff_sup.create_tugas', compact('allpengajar', 'alluser', 'allkelas'));
     }
 
     /**
@@ -47,29 +50,32 @@ class KelasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-{
-    // dd ($request);
+    {
+        // dd ($request);
     $data = $request->validate([
-        'namakelas'          =>  ['required', 'string', 'max:255'],
-        'deskripsikelas'     =>  ['required', 'string', 'max:255'],
-        'harga'              =>  ['required', 'string', 'max:255'],
-        'pengajarID'         =>  ['required'],
-        'images'             =>  'required|image|mimes:jpeg,png,jpg,gif|max:5048',
+        'namatugas'          =>  ['required', 'string', 'max:255'],
+        'keterangan'         =>  ['required', 'string', 'max:255'],
+        'deadline'           =>  ['required', 'string', 'max:255'],
+        'kelasID'            =>  ['required', 'max:50'],
+        'userID'             =>  ['required', 'max:50'],
+        'pengajarID'         =>  ['required', 'max:50'],
+        // 'images'             =>  'required|image|mimes:jpeg,png,jpg,gif|max:5048',
     ]);
 
-    $images = $request->file('images')->store('Gambar_Kelas');
+    // $images = $request->file('images')->store('Gambar_Kelas');
 
-    Kelas::create([
-        'namakelas'         => $request->namakelas,
+    Tugas::create([
+        'namatugas'         => $request->namatugas,
+        'keterangan'        => $request->keterangan,
+        'deadline'          => $request->deadline,
+        'kelasID'           => $request->kelasID,
+        'userID'            => $request->userID,
         'pengajarID'        => $request->pengajarID,
-        'deskripsikelas'    => $request->deskripsikelas,
-        'harga'             => $request->harga,
-        "images"            => $images,
+        // "images"            => $images,
     ]);
 
-    return redirect(route('kelas'))->with('success', "successfully uploaded your Kelas");
-}
-
+    return redirect(route('tugas_create'))->with('success', "successfully uploaded your Tugas");
+    }
 
     /**
      * Display the specified resource.

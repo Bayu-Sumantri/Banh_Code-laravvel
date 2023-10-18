@@ -88,7 +88,25 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+        if ($request->hasFile('Profile')) {
+            if ($user->Profile) {
+                Storage::delete($user->Profile);
+            }
+
+            $path = $request->file('Profile')->store('Profile');
+        } else {
+
+            $path = $user->Profile;
+        }
+        $user -> update([
+           'name'           =>$request->name,  
+           'email'          =>$request->email,   
+           'level'          =>$request->level,   
+           "Profile"        => $path ?? $user->Profile
+       ]);
+       return redirect( route('user_list'))->with('success', 'Item updated successfully');
+       
     }
 
     /**

@@ -14,9 +14,25 @@
   <link rel="stylesheet" href="{{ asset("/admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css") }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset("/admin/dist/css/adminlte.min.css") }}">
+      <style type="text/css">
+        .user {
+            display: inline-block;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+        }
+    </style>
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
+    @if (session()->has('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
 
   <!-- Preloader -->
   <div class="preloader flex-column justify-content-center align-items-center">

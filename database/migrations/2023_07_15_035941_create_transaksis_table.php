@@ -17,8 +17,12 @@ return new class extends Migration
             $table->id('transaksiID');
             $table->string('name');
             $table->string('email');
+            $table->enum('metode_pembayaran', ['dana', 'bank']);
+            $table->string('no_dana')->nullable();
+            $table->string('rek_bank')->nullable();
+            $table->string('no_telepon');
             $table->foreignId('kelasID')->references('kelasID')->on('kelas');
-            $table->foreignId('pembelianID')->references('pembelianID')->on('pembelis');
+            // $table->foreignId('pembelianID')->references('pembelianID')->on('pembelis');
             $table->timestamps();
         });
     }

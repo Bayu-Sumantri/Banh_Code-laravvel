@@ -3,17 +3,7 @@
 @section('tittle')
     User Edit
 @endsection
-    <style type="text/css">
-        .user {
-            display: inline-block;
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-size: cover;
-        }
-    </style>
+
 
     <!-- update user dan gmail mulai -->
     <div class="container-fluid pt-4 px-4">

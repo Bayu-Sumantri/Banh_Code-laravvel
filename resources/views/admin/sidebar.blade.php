@@ -81,24 +81,50 @@
                   </li>
 
 
-                  {{-- pengajar --}}
+                  {{-- User --}}
                   <li class="nav-item menu-close">
                       <a href="{{ url('#') }}" class="nav-link active">
                           <i class="nav-icon fas fa-bars"></i>
                           <p>
-                              User Sup
+                                User Sup
                               <i class="right fas fa-angle-left"></i>
                           </p>
                       </a>
                       <ul class="nav nav-treeview">
                           <li class="nav-item">
-                              <a href="{{ route('User.index') }}" class="nav-link">
+                              <a href="{{ route('pembelian_show',) }}" class="nav-link">
                                   <i class="fas fa-money-check nav-icon"></i>
-                                  <p>Kelas</p>
+                                  <p>Pembelian</p>
                               </a>
                           </li>
                           <li class="nav-item">
-                              <a href="{{ route('user_list') }}" class="nav-link ">
+                              <a href="{{ route('tugas_user') }}" class="nav-link ">
+                                  <i class="fas fa-users nav-icon"></i>
+                                  <p>Tugas</p>
+                              </a>
+                          </li>
+                      </ul>
+                  </li>
+
+
+                  {{-- Staff --}}
+                  <li class="nav-item menu-close">
+                      <a href="{{ url('#') }}" class="nav-link active">
+                          <i class="nav-icon fas fa-bars"></i>
+                          <p>
+                                Staff Sup
+                              <i class="right fas fa-angle-left"></i>
+                          </p>
+                      </a>
+                      <ul class="nav nav-treeview">
+                          <li class="nav-item">
+                              <a href="{{ route('create_tugas',) }}" class="nav-link">
+                                  <i class="fas fa-money-check nav-icon"></i>
+                                  <p>Create Tugas </p>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a href="{{ route('tugas_user') }}" class="nav-link ">
                                   <i class="fas fa-users nav-icon"></i>
                                   <p>Tugas</p>
                               </a>

@@ -16,7 +16,7 @@
         </div>
     @endif
 
-    <form action="{{ route('Kelas.store') }}" method="post">
+    <form action="{{ route('Kelas.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
             <div class="form-group">
@@ -28,8 +28,8 @@
                 <label for="exampleInputFile">File input</label>
                 <div class="input-group">
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile" name="images">
-                        <label class="custom-file-label" for="exampleInputFile">Choose img</label>
+                    <input type="file" class="custom-file-input" id="exampleInputFile" name="images">
+                        <label class="custom-file-label" for="exampleInputFile">Choose IMG</label>
                     </div>
                 </div>
             </div>
@@ -40,20 +40,25 @@
 
             <div class="form-group">
                 <label for="exampleSelectBorder">nama dan spesialis </label>
-                <select class="custom-select form-control-border" name="spesialis" id="exampleSelectBorder">
+                <select class="custom-select form-control-border" name="pengajarID" id="exampleSelectBorder">
                     <option value="#">Select</option>
                     @foreach ($allpengajar as $pengajar)
-                        <option value="{{ $pengajar->id }}">{{ $pengajar->namapengajar }} - {{ $pengajar->spesialis }}</option>
+                        <option value="{{ $pengajar->pengajarID }}">{{ $pengajar->namapengajar }} -
+                            {{ $pengajar->spesialis }}</option>
                     @endforeach
                 </select>
             </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Harga</label>
+                <input type="text" class="form-control" id="exampleInputtext" name="harga"
+                    placeholder="Enter Harga Kelas">
+            </div>
+        </div>
 
-</div>
-
-<div class="card-footer">
-    <button type="submit" class="btn btn-primary">Submit</button>
-</div>
-</form>
+        <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
 
 </div>
 @endsection

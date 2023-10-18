@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('images');
             $table->string('deskripsikelas');
             $table->foreignId('pengajarID')->references('pengajarID')->on('pengajars');
+            $table->string('harga');
             $table->timestamps();
         });
     }

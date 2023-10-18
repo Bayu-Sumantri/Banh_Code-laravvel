@@ -2,12 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
 use App\Models\Pengajar;
-use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
 
-class UserSeeder extends Seeder
+class PengajarSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,15 +15,8 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $user = new \App\Models\User;
+        // $user = new \App\Models\User;
 
-        User::create([
-            "name"           => "bayu", 
-            "email"          => "bayu@gmail.com", 
-            "Profile"          => "",
-            "level"          => "Admin", 
-            "password"       => \bcrypt('bayu12345')
-        ]);
         Pengajar::create([
             "namapengajar"           => "albert", 
             "spesialis"              => "Python", 
@@ -42,4 +34,4 @@ class UserSeeder extends Seeder
         ]);
         
     }
-}
+    }

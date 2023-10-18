@@ -18,8 +18,14 @@ class Pengajar extends Model
         "spesialis",
         "kontakemail",
     ];
-    public function kelas(): HasOne
+    public function kelas(): hasOne
     {
         return $this->hasOne(Kelas::class, 'pengajarID');
     }
+    
+    public function tugas(): hasOne
+    {
+        return $this->hasOne(tugas::class, 'pengajarID');
+    }
+    
 }

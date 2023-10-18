@@ -7,7 +7,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Banh Code</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset("/banhcode/assets/img/Banh Code.ico") }}" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('/banhcode/assets/img/Banh Code.ico') }}" />
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -17,7 +17,7 @@
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="{{ asset("/banhcode/css/styles.css") }}" rel="stylesheet" />
+    <link href="{{ asset('/banhcode/css/styles.css') }}" rel="stylesheet" />
 </head>
 
 <body id="page-top">
@@ -26,102 +26,102 @@
     ?>
 
     <style>
-    /* Center the loader */
+        /* Center the loader */
 
-    #loader {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        z-index: 1;
-        width: 150px;
-        height: 150px;
-        margin: -75px 0 0 -75px;
-        border: 16px solid #f3f3f3;
-        border-radius: 50%;
-        border-top: 16px solid #3498db;
-        width: 120px;
-        height: 120px;
-        -webkit-animation: spin 2s linear infinite;
-        animation: spin 2s linear infinite;
-    }
-
-    @-webkit-keyframes spin {
-        0% {
-            -webkit-transform: rotate(0deg);
+        #loader {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            z-index: 1;
+            width: 150px;
+            height: 150px;
+            margin: -75px 0 0 -75px;
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #3498db;
+            width: 120px;
+            height: 120px;
+            -webkit-animation: spin 2s linear infinite;
+            animation: spin 2s linear infinite;
         }
 
-        100% {
-            -webkit-transform: rotate(360deg);
-        }
-    }
+        @-webkit-keyframes spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
 
-    @keyframes spin {
-        0% {
-            transform: rotate(0deg);
-        }
-
-        100% {
-            transform: rotate(360deg);
-        }
-    }
-
-    /* Add animation to "page content" */
-    .animate-bottom {
-        position: relative;
-        -webkit-animation-name: animatebottom;
-        -webkit-animation-duration: 1s;
-        animation-name: animatebottom;
-        animation-duration: 1s
-    }
-
-    @-webkit-keyframes animatebottom {
-        from {
-            bottom: -100px;
-            opacity: 0
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
         }
 
-        to {
-            bottom: 0px;
-            opacity: 1
-        }
-    }
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
 
-    @keyframes animatebottom {
-        from {
-            bottom: -100px;
-            opacity: 0
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
-        to {
-            bottom: 0;
-            opacity: 1
+        /* Add animation to "page content" */
+        .animate-bottom {
+            position: relative;
+            -webkit-animation-name: animatebottom;
+            -webkit-animation-duration: 1s;
+            animation-name: animatebottom;
+            animation-duration: 1s
         }
-    }
 
-    #myDiv {
-        display: none;
-    }
+        @-webkit-keyframes animatebottom {
+            from {
+                bottom: -100px;
+                opacity: 0
+            }
 
-    /*css3 design scrollbar*/
-    ::-webkit-scrollbar {
-        width: 15px;
-    }
+            to {
+                bottom: 0px;
+                opacity: 1
+            }
+        }
 
-    ::-webkit-scrollbar-track {
-        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-        background: transparent;
-    }
+        @keyframes animatebottom {
+            from {
+                bottom: -100px;
+                opacity: 0
+            }
 
-    ::-webkit-scrollbar-thumb {
-        background: rgba(0, 0, 204, 0.5);
-    }
+            to {
+                bottom: 0;
+                opacity: 1
+            }
+        }
+
+        #myDiv {
+            display: none;
+        }
+
+        /*css3 design scrollbar*/
+        ::-webkit-scrollbar {
+            width: 15px;
+        }
+
+        ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 204, 0.5);
+        }
     </style>
 
 
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
         <div class="container px-4 px-lg-5" data-aos="zoom-in" data-aos-duration="1150">
-            <a class="navbar-brand" href="{{ url("#page-top") }}">Banh Code</a>
+            <a class="navbar-brand" href="{{ url('#page-top') }}">Banh Code</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -129,15 +129,22 @@
                 <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto" >
-                    <li class="nav-item"><a class="nav-link" href="{{ url("#about") }}">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url("#projects") }}">Project</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url("#responses") }}">Feedback</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url("/plans") }}">plans</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route("register") }}">Daftar</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ route("login") }}">Login</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url("account.php") }}">
-                            </a></li>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{{ url('#about') }}">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url('#projects') }}">Project</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url('#responses') }}">Feedback</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('plans') }}">plans</a></li>
+        
+                    @auth
+                        <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">{{ auth()->user()->name }}</a></li>
+
+                    @else
+                        <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Daftar</a></li>
+
+                    @endauth
+
+                    
 
             </div>
         </div>
@@ -153,7 +160,7 @@
                     <h2 class="text-white-50 mx-auto mt-2 mb-5">The best error message is the one that never shows
                         up.
                     </h2>
-                    <a class="btn btn-primary" href="{{ url("#about") }}">Get Started</a>
+                    <a class="btn btn-primary" href="{{ url('#about') }}">Get Started</a>
                 </div>
             </div>
         </div>
@@ -173,7 +180,7 @@
                 </div>
             </div>
             <img class="img-fluid" data-aos="zoom-in" data-aos-delay="200"
-                src="{{ asset("/banhcode/assets/img/Banh_Code-(no-background).png") }}" alt="..." />
+                src="{{ asset('/banhcode/assets/img/Banh_Code-(no-background).png') }}" alt="..." />
         </div>
 
     </section>
@@ -189,7 +196,7 @@
             <!-- Featured Project Row-->
             <div class="row gx-0 mb-4 mb-lg-5 align-items-center">
                 <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" data-aos="zoom-out-right"
-                        src="{{ asset("/banhcode/assets/img/icikiwir.jpg") }}" alt="..." /></div>
+                        src="{{ asset('/banhcode/assets/img/icikiwir.jpg') }}" alt="..." /></div>
                 <div class="col-xl-4 col-lg-5">
                     <div class="featured-text text-center text-lg-left">
                         <h4>Programs</h4>
@@ -202,7 +209,8 @@
             <!-- Project One Row-->
             <div class="row gx-0 mb-5 mb-lg-0 justify-content-center" data-aos="fade-left"
                 data-aos-anchor="#example-anchor" data-aos-offset="500" data-aos-duration="500">
-                <div class="col-lg-6"><img class="img-fluid" src="{{ asset("/banhcode/assets/img/coding banh.jpg") }}" alt="..." /></div>
+                <div class="col-lg-6"><img class="img-fluid"
+                        src="{{ asset('/banhcode/assets/img/coding banh.jpg') }}" alt="..." /></div>
                 <div class="col-lg-6">
                     <div class="text-center h-100 project" style="background-color: #C4C8E3;">
                         <div class="d-flex h-100">
@@ -219,7 +227,8 @@
             </div>
             <!-- Project Two Row-->
             <div class="row gx-0 justify-content-center">
-                <div class="col-lg-6"><img class="img-fluid" src="{{ asset("/banhcode/assets/img/maling koding.jpg") }}" alt="..." /></div>
+                <div class="col-lg-6"><img class="img-fluid"
+                        src="{{ asset('/banhcode/assets/img/maling koding.jpg') }}" alt="..." /></div>
                 <div class="col-lg-6 order-lg-first">
                     <div class="text-center h-100 project" style="background-color: #C4C8E3;">
                         <div class="d-flex h-100">
@@ -250,17 +259,21 @@
                         <!-- Email address input-->
                         <div class="row input-group-newsletter">
                             <div class="row margin" id="form_respon"><input class="form-control" id="emailAddress"
-                                    name="gmail" type="email" placeholder="Enter email address..." data-aos="fade-up"
-                                    data-aos-duration="5000" aria-label="Enter email address..." required></div>
+                                    name="gmail" type="email" placeholder="Enter email address..."
+                                    data-aos="fade-up" data-aos-duration="5000" aria-label="Enter email address..."
+                                    required></div>
                             <div class="row margin" id="form_respon"><input class="form-control" id="emailAddress"
-                                    name="username" type="text" placeholder="Enter Your username..." data-aos="fade-up"
-                                    data-aos-duration="5000" aria-label="Enter Your username..." /></div>
+                                    name="username" type="text" placeholder="Enter Your username..."
+                                    data-aos="fade-up" data-aos-duration="5000"
+                                    aria-label="Enter Your username..." /></div>
                             <div class="row margin" id="form_respon"><input class="form-control" id="emailAddress"
-                                    name="no_phone" type="number" placeholder="Enter Number Phone..." data-aos="fade-up"
-                                    data-aos-duration="5000" aria-label="Enter Number Phone..." /></div>
+                                    name="no_phone" type="number" placeholder="Enter Number Phone..."
+                                    data-aos="fade-up" data-aos-duration="5000" aria-label="Enter Number Phone..." />
+                            </div>
                             <div class="row margin" id="form_respon"><input class="form-control" id="emailAddress"
-                                    name="tanggapan" type="text" placeholder="Enter Your response..." data-aos="fade-up"
-                                    data-aos-duration="5000" aria-label="Enter Your response..." /></div>
+                                    name="tanggapan" type="text" placeholder="Enter Your response..."
+                                    data-aos="fade-up" data-aos-duration="5000"
+                                    aria-label="Enter Your response..." /></div>
                             <div class="row-auto"></div>
                             <button class="btn btn-primary" style="width: 96%; margin-left: 15px;" id="submitButton"
                                 type="submit" data-aos="fade-up" data-aos-duration="5000">Notify Me!</button>
@@ -323,30 +336,30 @@
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
-    <script src="{{ asset("/banhcode/js/scripts.js") }}"></script>
+    <script src="{{ asset('/banhcode/js/scripts.js') }}"></script>
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 
     <body onload="myFunction()" style="margin:0;">
         <div id="loader"></div>
         <div style="display:none;" id="myDiv" class="animate-bottom">
             <script>
-            // Loading Page
-            var myVar;
+                // Loading Page
+                var myVar;
 
-            function myFunction() {
+                function myFunction() {
 
-                myVar = setTimeout(showPage, 500);
+                    myVar = setTimeout(showPage, 500);
 
-            }
+                }
 
-            function showPage() {
-                document.getElementById("loader").style.display = "none";
-                document.getElementById("myDiv").style.display = "block";
-            }
+                function showPage() {
+                    document.getElementById("loader").style.display = "none";
+                    document.getElementById("myDiv").style.display = "block";
+                }
             </script>
             <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
             <script>
-            AOS.init();
+                AOS.init();
             </script>
 
     </body>

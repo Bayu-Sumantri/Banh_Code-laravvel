@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pembelis', function (Blueprint $table) {
+        Schema::create('pembelians', function (Blueprint $table) {
             $table->id('pembelianID');
             $table->foreignId('userID')->references('id')->on('users');
+            $table->foreignId('transaksiID')->references('transaksiID')->on('transaksis');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pembelis');
+        Schema::dropIfExists('pembelian');
     }
 };

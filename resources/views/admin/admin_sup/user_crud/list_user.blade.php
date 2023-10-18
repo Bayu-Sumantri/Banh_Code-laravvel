@@ -15,7 +15,7 @@
 	@endif
 
 	<!-- Button trigger modal -->
-	<a href="{{ url('create_user') }}"  class="btn btn-primary"><i class="fa fa-plus"></i>
+	<a href="{{ url('user_create') }}"  class="btn btn-primary"><i class="fa fa-plus"></i>
 		User
 	</a>
 
@@ -58,6 +58,8 @@
 						<td><form method="post" onsubmit="return confirm('Apakah anda yakin akan menghapus, {{ $row->name }}?..')" action="{{ route('delate.destroy', [$row->id]) }}">
 							@csrf
 							{{ method_field('DELETE') }}
+							<a href="{{ route('edit_user', $row->id) }}"
+								class="btn btn-info"><i class="far fa-edit"></i></a>
 							</td>
 							<td>
 								<button type="submit" class="btn btn-danger"><i

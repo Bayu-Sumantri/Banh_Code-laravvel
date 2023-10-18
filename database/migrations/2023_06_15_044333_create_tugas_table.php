@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('keterangan');
             $table->string('deadline');
             $table->foreignId('kelasID')->references('kelasID')->on('kelas');
+            $table->foreignId('userID')->references('id')->on('users');
+            $table->foreignId('pengajarID')->references('pengajarID')->on('pengajars');
             $table->timestamps();
         });
     }
