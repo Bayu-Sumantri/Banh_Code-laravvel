@@ -26,6 +26,7 @@
         </thead>
         <tbody>
                 <tr>
+                {{-- resi cetak --}}
                     <td>{{ $transaksi->pembelian->user->id }}</td>
                     <td>{{ $transaksi->name }}</td>
                     <td>{{ $transaksi->email }}</td>
