@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pengajar;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PengajarController extends Controller
@@ -16,7 +17,9 @@ class PengajarController extends Controller
     {
         $pengajar = Pengajar::orderBy('namapengajar', 'asc')->simplePaginate(3);
         $total_pengajar = Pengajar::count();
-        return view('admin.admin_sup.pengajar_create',compact('pengajar', 'total_pengajar'));
+        $users  = User::all();
+        
+        return view('admin.admin_sup.pengajar_create',compact('pengajar', 'total_pengajar', 'users'));
     }
 
     /**
@@ -26,7 +29,9 @@ class PengajarController extends Controller
      */
     public function create()
     {
-        return view('admin.admin_sup.pengajar_create');
+        $users  = User::all();
+        
+        return view('admin.admin_sup.pengajar_create', compact('users'));
     }
 
     /**
@@ -37,16 +42,19 @@ class PengajarController extends Controller
      */
     public function store(Request $request)
     {
+        // return $request;
         $data = $request->validate([
             'namapengajar'          =>  ['required','string','max:255'],
             'spesialis'             =>  ['required','string','max:255'],
             'kontakemail'           =>  ['required','string','max:255'],
+            'userID'                =>  ['required'],
         ]);
 
         Pengajar::create([
             "namapengajar"          => $request->namapengajar,
             "spesialis"             => $request->spesialis,
             "kontakemail"           => $request->kontakemail,
+            "userID"                => $request->userID,
         ]);
 
         // return $data;

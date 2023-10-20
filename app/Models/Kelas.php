@@ -25,17 +25,17 @@ class Kelas extends Model
 
     public function pengajar(): BelongsTo
     {
-        return $this->belongsTo(pengajar::class, 'pengajarID');
+        return $this->belongsTo(Pengajar::class, 'pengajarID');
     }
 
     public function transaksi(): hasOne
     {
-        return $this->hasOne(transaksi::class, 'kelasID');
+        return $this->hasOne(Transaksi::class, 'kelasID');
     }
     
     public function tugas(): hasOne
     {
-        return $this->hasOne(tugas::class, 'kelasID');
+        return $this->hasOne(Tugas::class, 'kelasID');
     }
     
 }

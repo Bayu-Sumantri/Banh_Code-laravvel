@@ -21,8 +21,19 @@
         <div class="card-body">
             <div class="form-group">
                 <label for="exampleInputEmail1">Nama Pengajar</label>
-                <input type="text" class="form-control" id="exampleInputtext" name="namapengajar" placeholder="Enter nama pengajar">
+                <input type="text" class="form-control" id="exampleInputEmail1" name="namapengajar"
+                    placeholdere="nama pengajar">
             </div>
+            <div class="form-group">
+                <label for="exampleSelectBorder">user </label>
+                <select class="custom-select form-control-border" name="userID" id="exampleSelectBorder">
+                    <option value="#">Select</option>
+                    @foreach ($users as $row)
+                        <option value="{{ $row->id }}">{{ $row->name }} - {{ $row->id }} - {{ $row->getRoleNames() }}</option>
+                    @endforeach
+                </select>
+            </div>
+
             <div class="form-group">
                 <label for="exampleInputEmail1">Spesial</label>
                 <input type="text" class="form-control" id="exampleInputEmail1" name="spesialis"

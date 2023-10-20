@@ -26,7 +26,7 @@
         </thead>
         <tbody>
                 <tr>
-                    <td>{{ $transaksi->pembelian->user->id }}</td>
+                    <td>{{ $transaksi->transaksiID }}</td>
                     <td>{{ $transaksi->name }}</td>
                     <td>{{ $transaksi->email }}</td>
                     <td>{{ $transaksi->kelasID }} {{ $transaksi->kelas->namakelas }}</td>

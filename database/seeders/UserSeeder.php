@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Pengajar;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -16,30 +17,33 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $user = new \App\Models\User;
+        // $user = new \App\Models\User;
 
-        User::create([
-            "name"           => "bayu", 
-            "email"          => "bayu@gmail.com", 
-            "Profile"          => "",
-            "level"          => "Admin", 
-            "password"       => \bcrypt('bayu12345')
+       $user = User::create([
+            "name"              => "bayu", 
+            "email"             => "bayu@gmail.com", 
+            'email_verified_at' => now(),
+            "Profile"           => "",
+            // "level"             => "Admin", 
+            "password"          => \bcrypt('bayu12345'),
+            'remember_token'    => Str::random(10)
         ]);
-        Pengajar::create([
-            "namapengajar"           => "albert", 
-            "spesialis"              => "Python", 
-            "kontakemail"            => "albertis@gmail.com",
-        ]);
-        Pengajar::create([
-            "namapengajar"           => "dia", 
-            "spesialis"              => "PHP", 
-            "kontakemail"            => "diaisnot@gmail.com",
-        ]);
-        Pengajar::create([
-            "namapengajar"           => "sugenep", 
-            "spesialis"              => "Javascrip", 
-            "kontakemail"            => "sugenep@gmail.com",
-        ]);
+        $user->assignRole('admin');
+        // Pengajar::create([
+        //     "namapengajar"           => "albert", 
+        //     "spesialis"              => "Python", 
+        //     "kontakemail"            => "albertis@gmail.com",
+        // ]);
+        // Pengajar::create([
+        //     "namapengajar"           => "dia", 
+        //     "spesialis"              => "PHP", 
+        //     "kontakemail"            => "diaisnot@gmail.com",
+        // ]);
+        // Pengajar::create([
+        //     "namapengajar"           => "sugenep", 
+        //     "spesialis"              => "Javascrip", 
+        //     "kontakemail"            => "sugenep@gmail.com",
+        // ]);
         
     }
 }

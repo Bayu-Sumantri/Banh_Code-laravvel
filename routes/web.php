@@ -149,10 +149,17 @@ Route::get('/resi_pembelian/{transaksiID}', function (string $transaksiID) {
 Route::resource('Tugas', 'App\Http\Controllers\TugasController');
 Route::get('/tugas_user', function () {
     // $pembelian = Pembelian::orderBy('userID', 'asc')->simplePaginate(10);
-    $tugas = Tugas::all();
+    $tugas = Tugas::orderBy('namatugas', 'asc')->simplePaginate(10);
     // return $episode;
     return view('admin.user_sup.tugas', compact('tugas'));
 })->name('tugas_user');
+
+Route::get('/tugas_staff_show', function () {
+    // $pembelian = Pembelian::orderBy('userID', 'asc')->simplePaginate(10);
+    $tugas = Tugas::all();
+    // return $episode;
+    return view('admin.staff_sup.tugas_show', compact('tugas'));
+})->name('tugas_staff_show');
 
 Route::get('/create_tugas', function () {
     // $pembelian = Pembelian::orderBy('userID', 'asc')->simplePaginate(10);
@@ -163,6 +170,35 @@ Route::get('/create_tugas', function () {
     return view('admin.staff_sup.create_tugas', compact('allpengajar', 'alluser', 'allkelas'));
 })->name('create_tugas');
 Route::get('/tugas_create', [TugasController::class,"create"])->name('tugas_create'); // halaman create menu saja
+
+Route::get('/user_active_kelas', function () {
+    // $pembelian = Pembelian::orderBy('userID', 'asc')->simplePaginate(10);
+    $alltransaksi = Transaksi::whereHas('kelas', function ($query1){
+        $query1->whereHas('pengajar', function ($query2){
+            return $query2->where('userID', auth()->id());
+        }); 
+    });
+    // return $episode;
+    return view('admin.staff_sup.list_user_kelas', compact('alltransaksi'));
+})->name('user_active_kelas');
+
+
+// show tugas user 
+Route::get('/detail_tugas_user/{tugasID}', function (string $tugasID) {
+    // $pembelian = Pembelian::orderBy('userID', 'asc')->simplePaginate(10);
+    $tugas = Tugas::findOrFail($tugasID);
+    // return $tugas;
+    return view('admin.user_sup.detail_tugas', compact('tugas'));
+})->name('detail_tugas_user');
+
+
+//show tugas staff
+Route::get('/detail_tugas_staff/{tugasID}', function (string $tugasID) {
+    // $pembelian = Pembelian::orderBy('userID', 'asc')->simplePaginate(10);
+    $tugas = Tugas::findOrFail($tugasID);
+    // return $tugas;
+    return view('admin.staff_sup.detail_tugas_staff', compact('tugas'));
+})->name('detail_tugas_staff');
 
 
 

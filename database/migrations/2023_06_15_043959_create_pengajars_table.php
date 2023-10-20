@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('pengajars', function (Blueprint $table) {
             $table->id('pengajarID');
+            $table->foreignId('userID')->references('id')->on('users');
             $table->string('namapengajar');
             $table->string('spesialis');
             $table->string('kontakemail');

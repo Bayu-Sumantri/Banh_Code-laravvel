@@ -30,6 +30,7 @@
                         {{-- <th scope="col">No</th> --}}
                         <th scope="col">Nama Tugas</th>
                         <th scope="col">Waktu Tugas</th>
+                        <th scope="col">Tugas User</th>
                         <th scope="col">Detail Tugas </th>
                     </tr>
                 </thead>
@@ -37,9 +38,10 @@
                     <tr>
                         @foreach ($tugas as $row)
                             <td>{{ $row->namatugas }}</td>
+                            <td>{{ $row->userID }}</td>
                             <td>{{ $row->deadline }}</td>
                             <td>
-                                <a href="{{ route('detail_tugas_user', $row->tugasID) }}"
+                                <a href="{{ route('detail_tugas_staff', $row->tugasID) }}"
 								class="btn btn-info"><i class="fas fa-book"></i></a>
 
                             </td>

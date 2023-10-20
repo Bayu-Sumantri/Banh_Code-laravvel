@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Pengajar extends Model
@@ -17,6 +18,7 @@ class Pengajar extends Model
         "namapengajar",
         "spesialis",
         "kontakemail",
+        "userID",
     ];
     public function kelas(): hasOne
     {
@@ -25,7 +27,12 @@ class Pengajar extends Model
     
     public function tugas(): hasOne
     {
-        return $this->hasOne(tugas::class, 'pengajarID');
+        return $this->hasOne(Tugas::class, 'pengajarID');
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'userID');
     }
     
 }

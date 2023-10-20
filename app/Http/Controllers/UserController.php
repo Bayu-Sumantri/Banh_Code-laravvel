@@ -43,15 +43,25 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
             'password' => 'required',
-            'level' => 'required|string|max:255',
+            'level' => 'required',
         ]);
 
-        User::create([
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'level' => $request->level,
         ]);
+        
+        if($request->level == 'admin') {
+            $user->assignRole('admin');
+            
+        }elseif($request->level == 'user') {
+            $user->assignRole('user');
+            
+            }elseif($request->level == 'staff') {
+                $user->assignRole('staff');
+            }
+        
         // return $request;
         return redirect()->route('User.index')->with('success', "successfully Create user");
         
