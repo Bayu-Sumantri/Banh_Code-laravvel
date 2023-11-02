@@ -1,4 +1,4 @@
-# Service Tools
+# BANH_CODE
 
 Website ini adalah sebuah web yang dimana dia website seperti kelas online untuk programmer 
 yang dimana dia dalam weeb tersebut sudah tersedia 3 role admin staff dan user
@@ -71,4 +71,4 @@ APP_URL
 
 ## Developer
 
--   [@Banh_Code](https://github.com/Bayu-Sumantri)
+-   [Banh_Code](https://github.com/Bayu-Sumantri)
